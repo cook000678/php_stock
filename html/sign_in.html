@@ -1,0 +1,46 @@
+<?php
+session_start();
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/php_practice/js/Myscript.js"></script>
+    <link rel="stylesheet" href="../css/sign_in.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    <div class="head">
+    </div>
+    <div class="Login">
+        <form action = "/php_practice/php/0602.php" method="POST">
+            <label for="username">帳號：</label>
+            <input type="text" id="username" name="username"><br><br>
+
+            <label for="password">密碼：</label>
+            <input type="password" id="passowrd" name="password"><br><br>
+
+            <!--<input type="submit" Value="註冊">-->
+            <input type="submit" value="送出">
+        </form>
+    </div>
+    
+    <!--
+    <div class="Login">
+        <div class="account">
+            <p id="text1">帳號：<input type="text account"></p>
+        </div>
+        <div class="password">
+            <p id="text1">密碼：<input type="text password"></p>
+        </div>
+        <div class="Login_button">
+            <button>登入</button>
+        </div>
+    </div>
+    -->
+</body>
+</html>
