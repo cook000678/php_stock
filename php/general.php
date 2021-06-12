@@ -6,7 +6,7 @@ if(isset($_SESSION["level"]) || ($_SESSION["level"])!=""){
 	if($_SESSION["level"]=="general"){
 		//header("Location: general.php");
 	}else{
-		header("Location: /php_practice/html/sign_in.html");
+		header("Location: /php_stock/html/sign_in.html");
 	}
 }
 

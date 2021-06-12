@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sign_in.css">
+    
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>我是管理員</h1>
+
+    <div class="insertt">
+        <form action = "/php_stock/php/admin.php" method="POST">
+        
+            <label for="Date">日期:</label><br>
+            <input type="date" id="Date" name="Date"><br><br>
+    
+            <label for="Codename">代號:</label><br>
+            <input type="text" id="Codename" name="Codename"><br><br>
+         
+            <label for="Name">名稱:</label><br>
+            <input type="text" id="Name" name="Name"><br><br>
+
+            
+            <label for="Buy_Sell">買賣:</label><br>
+            <input type="radio" id= "Buy" name="Buy" value="Buy">買<br>
+            <!--
+                <input type="radio" name="Transaction" value="Sell">賣<br><br>
+            -->
+            
+            <label for="Quantity">股數:</label><br>
+            <input type="text" id="Quantity" name="Quantity"><br><br>
+
+            <label for="Price">價格:</label><br>
+            <input type="text" id="Price" name="Price"><br><br>
+
+            <input type="submit" value="Submit">
+          </form>
+    </div>
+
+</body>
+</html>
