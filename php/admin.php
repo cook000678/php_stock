@@ -21,6 +21,7 @@ $Price = $_POST['Price'];
 
 echo $Date ."       ". $Codename . "       " . $Name . "       ". $Buy . "       "  . $Quantity . "       " . $Price;
 
+
 if($_POST['Date'] !="" && $_POST['Codename'] !="" && $_POST['Name']!="" && $_POST['Buy'] && $_POST['Quantity']!="" && $_POST['Price']!=""){
 	echo'我有近來';
 	$Ins_stock = Insert_stock($Date, $Codename, $Name, $Buy, $Quantity, $Price) ."<br>";

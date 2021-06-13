@@ -8,7 +8,7 @@ function Loginmember($Login_username){
     $username = $Login_username;
     
     //sql 語法
-    $sql = ("SELECT username, password, level
+    $sql = ("SELECT ID, username, password, level
             FROM member
             WHERE username = :username");
     
@@ -19,11 +19,12 @@ function Loginmember($Login_username){
     
     $Loginmember = array();
     while($Result = $sth -> fetch(PDO::FETCH_ASSOC)){
-        $student_scoretemp["username"] = $Result["username"];
-        $student_scoretemp["password"] = $Result["password"];
-        $student_scoretemp["level"] = $Result["level"];
-        $Loginmember[] = $student_scoretemp;
-    unset($student_scoretemp);
+        $Memberprofile["ID"] = $Result["ID"];
+        $Memberprofile["username"] = $Result["username"];
+        $Memberprofile["password"] = $Result["password"];
+        $Memberprofile["level"] = $Result["level"];
+        $Loginmember[] = $Memberprofile;
+    unset($Memberprofile);
     }
     return $Loginmember;
 }
