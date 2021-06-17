@@ -12,6 +12,7 @@ if(isset($_SESSION["level"]) || ($_SESSION["level"])!=""){
 print_r($_SESSION["level"]);
 echo'我是管理者'."<br> <br> <br> <br>";
 
+$ID = $_SESSION["ID"];
 $Date = $_POST['Date'];
 $Codename = $_POST['Codename'];
 $Name = $_POST['Name'];
@@ -19,16 +20,15 @@ $Buy = $_POST['Buy'];
 $Quantity = $_POST['Quantity'];
 $Price = $_POST['Price'];
 
-echo $Date ."       ". $Codename . "       " . $Name . "       ". $Buy . "       "  . $Quantity . "       " . $Price;
+//echo $ID. "       " . $Date ."       ". $Codename . "       " . $Name . "       ". $Buy . "       "  . $Quantity . "       " . $Price;
 
 
-if($_POST['Date'] !="" && $_POST['Codename'] !="" && $_POST['Name']!="" && $_POST['Buy'] && $_POST['Quantity']!="" && $_POST['Price']!=""){
-	echo'我有近來';
-	$Ins_stock = Insert_stock($Date, $Codename, $Name, $Buy, $Quantity, $Price) ."<br>";
+if($ID!="" && $Date!= "" && $Codename!="" && $Name!="" && $Buy!="" && $Quantity!="" && $Price!=""){
+	$Ins_stock = Insert_stock($ID, $Date, $Codename, $Name, $Buy, $Quantity, $Price) ."<br>";
 	echo'新增成功'."<br>";
 }else{
 	echo'新增不成功';
-	//header("Location:/php_stock/html/admin.html");
+	header("Location:/php_stock/html/admin.html");
 }
 
 
