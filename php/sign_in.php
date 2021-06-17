@@ -24,15 +24,17 @@ if (!isset($_SESSION["loginMember"]) || $_SESSION["loginMember"]==""){
     $_SESSION['ID'] = $System_ID;
     $_SESSION['username'] = $System_username;
     $_SESSION['level'] = $System_level;
-    /*
+    
+    
     if($_SESSION['level'] == 'admin'){
-        echo'我是管理員';
+        //echo'我是管理員';
         header("Location: /php_stock/html/admin.html");
     }else{
         header("Location: /php_stock/html/general.html");
     }
-    */
-    /*
+    
+
+    /* 
     print_r($_SESSION['ID']);
     print_r($_SESSION['username']);
     print_r($_SESSION['level']);
