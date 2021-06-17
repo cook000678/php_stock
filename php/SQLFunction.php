@@ -31,19 +31,18 @@ function Loginmember($Login_username){
 
 
 //insert stock
-function Insert_stock($ID, $Date, $Codename, $Name, $Buy, $Quantity, $Price){
+function Insert_stock($Date, $Codename, $Name, $Buy, $Quantity, $Price){
     global $ConnectSystem;
     $Total =  $Quantity * $Price;
 
-    $sql = ("INSERT INTO `stock`.`history` (`ID`, `Date`, `Codename`, `Name`, `Buy`, `Quantity`, `Price`, `Total`)
-            VALUES (:ID, :Date, :Codename, :Name, :Buy, :Quantity, :Price, :Total)
+    $sql = ("INSERT INTO `stock`.`history` (`Date`, `Codename`, `Name`, `Buy`, `Quantity`, `Price`, `Total`)
+            VALUES (:Date, :Codename, :Name, :Buy, :Quantity, :Price, :Total)
             ");
 
     //echo "<br>".$Date ."       ". $Codename . "       " . $Name . "       "  . $Quantity . "       " . $Price . "       ". $Total."<br>"; 
        
 
     $sth = $ConnectSystem -> prepare($sql);
-    $sth -> bindParam(":ID", $ID, PDO::PARAM_STR);
 	$sth -> bindParam(":Date", $Date, PDO::PARAM_STR);
 	$sth -> bindParam(":Codename", $Codename, PDO::PARAM_STR);
 	$sth -> bindParam(":Name", $Name, PDO::PARAM_STR);
