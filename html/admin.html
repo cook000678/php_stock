@@ -3,42 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/sign_in.css">
+    <link rel="stylesheet" href="../css/admin.css">
     
     <title>Document</title>
 </head>
 <body>
 
     <h1>我是管理員</h1>
-
-    <div class="insertt">
-        <form action = "/php_stock/php/admin.php" method="POST">
-        
-            <label for="Date">日期:</label><br>
-            <input type="date" id="Date" name="Date"><br><br>
+    <div class="head">
     
-            <label for="Codename">代號:</label><br>
-            <input type="text" id="Codename" name="Codename"><br><br>
-         
-            <label for="Name">名稱:</label><br>
-            <input type="text" id="Name" name="Name"><br><br>
-
-            
-            <label for="Buy_Sell">買賣:</label><br>
-            <input type="radio" id= "Buy" name="Buy" value="Buy">買<br>
-            <!--
-                <input type="radio" name="Transaction" value="Sell">賣<br><br>
-            -->
-            
-            <label for="Quantity">股數:</label><br>
-            <input type="text" id="Quantity" name="Quantity"><br><br>
-
-            <label for="Price">單價:</label><br>
-            <input type="text" id="Price" name="Price"><br><br>
-
-            <input type="submit" value="Submit">
-          </form>
     </div>
 
+    <div class="title">
+        <div class="titlee">
+            <span id="Date">Date</span>
+
+            <span id="Codename">Codename</span>
+
+            <span id="Name">Name</span>
+
+            <span id="Buy">Buy_Sell</span>
+
+            <span id="Quantity">Quantity</span>
+
+            <span id="Price">Price</span>
+        </div>
+        
+        <div class="insertt">
+            <form action = "/php_stock/php/admin.php" method="POST">
+            
+                
+                <input type="date" id="Date" name="Date" placeholder="請選擇時間">
+        
+                <input type="text" id="Codename" name="Codename" placeholder="請輸入代號">
+             
+                <input type="text" id="Name" name="Name" placeholder="請輸入名字">
+    
+                <input type="radio" id= "Buy" name="Buy" value="Buy">買
+                
+                <!--<input type="radio" name="Transaction" value="Sell">賣-->
+        
+                <input type="text" id="Quantity" name="Quantity" placeholder="請輸入股數">
+    
+                <input type="text" id="Price" name="Price" placeholder="請輸入價格">
+    
+                <input type="submit" value="Submit">
+              </form>
+        </div>
+
+    </div>
+
+    
 </body>
 </html>

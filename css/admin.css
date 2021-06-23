@@ -1,0 +1,35 @@
+.head{
+    width: auto;
+    height: 150px;
+    background-color: rgba(202, 175, 175, 0.062);
+}
+
+.title{
+    border: 3px solid lightblue;
+    padding: 5px;
+    width: auto;
+    margin:0px;
+}
+
+span{
+    margin:6%;  
+}
+
+#Date{
+    margin: 0% 3%;
+}
+#Codename{
+    margin: 0% 2.5%;
+}
+#Name{
+    margin: 2% 8% 0% 4%;
+}
+#Buy{
+    margin: 0% ;
+}
+#Quantity{
+    margin: 0% 5% 0% 10%;
+}
+#Price{
+    margin: 0% 3% 0% 0%;
+}
