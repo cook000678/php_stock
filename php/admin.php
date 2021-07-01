@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include("SQLFunction.php");
 
@@ -9,27 +10,32 @@ if(isset($_SESSION["level"]) || ($_SESSION["level"])!=""){
 		header("Location: /php_stock/html/sign_in.html");
 	}
 }
-print_r($_SESSION["level"]);
-echo'我是管理者'."<br> <br> <br> <br>";
+
+echo "我的Level是: ";
+print_r($_SESSION["level"]). "</br>";
+
 
 $ID = $_SESSION["ID"];
 $Date = $_POST['Date'];
 $Codename = $_POST['Codename'];
 $Name = $_POST['Name'];
-$Buy = $_POST['Buy'];
+$Sell_Buy = $_POST['Sell_Buy'];
 $Quantity = $_POST['Quantity'];
 $Price = $_POST['Price'];
 
-//echo $ID. "       " . $Date ."       ". $Codename . "       " . $Name . "       ". $Buy . "       "  . $Quantity . "       " . $Price;
 
 
-if($ID!="" && $Date!= "" && $Codename!="" && $Name!="" && $Buy!="" && $Quantity!="" && $Price!=""){
-	$Ins_stock = Insert_stock($ID, $Date, $Codename, $Name, $Buy, $Quantity, $Price) ."<br>";
+echo $ID. "       " . $Date ."       ". $Codename . "       " . $Name . "       ". $Sell_Buy . "       "  . $Quantity . "       " . $Price ."</br>";
+
+
+
+if($ID!="" && $Date!= "" && $Codename!="" && $Name!="" && $Sell_Buy!="" && $Quantity!="" && $Price!=""){
+	//$Ins_stock = Insert_Stock($ID, $Date, $Codename, $Name, $Sell_Buy, $Quantity, $Price) ."<br>";
 	echo'新增成功'."<br>";
 }else{
-	echo'新增不成功';
 	header("Location:/php_stock/html/admin.html");
 }
+
 
 
 //執行登出

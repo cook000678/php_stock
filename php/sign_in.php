@@ -1,13 +1,11 @@
 <?php
-
 session_start();
 
 include("SQLFunction.php");
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-echo $username ."<br>";
-echo $password ."<br>";
+
 
 if (!isset($_SESSION["loginMember"]) || $_SESSION["loginMember"]==""){
     
@@ -32,11 +30,8 @@ if (!isset($_SESSION["loginMember"]) || $_SESSION["loginMember"]==""){
         header("Location: /php_stock/html/general.html");
     }
     
-    /*
-    print_r($_SESSION['ID']);
-    print_r($_SESSION['username']);
-    print_r($_SESSION['level']);
-    */
+   
+    
 }
 
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <title>歷史查詢</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/php_stock/css/Select.css">
+</head>
+<body>
+    <div class="header">
+
+    </div>
+    <form action="/php_stock/php/Select.php" method="POST">
+        <div class="Select">
+            <h2>查詢</h2>
+            <table id="Select">
+                <tr>
+                    <th>ID</th>
+                    <th id="Date">Start_Date</th>
+                    <th id="Date">End_Date</th>
+                    <th id="Codename">Codename</th>
+                    <th id="Name">Name</th>
+                    <th id="Buy_Sell" colspan="2">Buy_Sell</th>
+                </tr>
+
+                <tr>
+                    <td><input type="text" id="ID" name="ID" placeholder="請輸入ID"></td>
+                    <td><input type="date" id="Date" name="Start_Date" placeholder="請輸入開始時間"></td>
+                    <td><input type="date" id="Date" name="End_Date" placeholder="請輸入結束時間"></td>
+                    <td><input type="text" id="Codename" name="Codename" placeholder="請輸入代號"></td>
+                    <td><input type="text" id="Name" name="Name" placeholder="請輸入名字"></td>
+                    <td><input type="radio" name="Sell_Buy" value="Buy">買</td>
+                    <td><input type="radio" name="Sell_Buy" value="Sell">賣</td>
+                    <td><input type="submit" value="查詢"></td>
+                </tr>
+            </table>
+
+        </div>
+    </form>    
+</body>
+</html>

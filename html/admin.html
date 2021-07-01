@@ -1,58 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <title>新增</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/admin.css">
-    
-    <title>Document</title>
+    <link rel="stylesheet" href="/php_stock/css/admin.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
+
 <body>
-
-    <h1>我是管理員</h1>
-    <div class="head">
     
-    </div>
-
-    <div class="title">
-        <div class="titlee">
-            <span id="Date">Date</span>
-
-            <span id="Codename">Codename</span>
-
-            <span id="Name">Name</span>
-
-            <span id="Buy">Buy_Sell</span>
-
-            <span id="Quantity">Quantity</span>
-
-            <span id="Price">Price</span>
-        </div>
-        
-        <div class="insertt">
-            <form action = "/php_stock/php/admin.php" method="POST">
-            
-                
-                <input type="date" id="Date" name="Date" placeholder="請選擇時間">
-        
-                <input type="text" id="Codename" name="Codename" placeholder="請輸入代號">
-             
-                <input type="text" id="Name" name="Name" placeholder="請輸入名字">
-    
-                <input type="radio" id= "Buy" name="Buy" value="Buy">買
-                
-                <!--<input type="radio" name="Transaction" value="Sell">賣-->
-        
-                <input type="text" id="Quantity" name="Quantity" placeholder="請輸入股數">
-    
-                <input type="text" id="Price" name="Price" placeholder="請輸入價格">
-    
-                <input type="submit" value="Submit">
-              </form>
-        </div>
+    <div class="header">
 
     </div>
+    <form action="../php/admin.php" method="POST">
+        <div class="Insert">
+            <h2>新增</h2>
+            <table id="Insert">
+                <tr>
+                    <th id="Date">Date</th>
+                    <th id="Codename">Codename</th>
+                    <th id="Name">Name</th>
+                    <th id="Buy_Sell" colspan="2">Buy_Sell</th>
+                    <th id="Quantity">Quantity</th>
+                    <th id="Price">Price</th>
+                </tr>
 
+                <tr>
+                    <td><input type="date" id="Date" name="Date" placeholder="請選擇時間"></td>
+                    <td><input type="text" id="Codename" name="Codename" placeholder="請輸入代號"></td>
+                    <td><input type="text" id="Name" name="Name" placeholder="請輸入名字"></td>
+                    <td><input type="radio" name="Sell_Buy" value="Buy">買</td>
+                    <td><input type="radio" name="Sell_Buy" value="Sell">賣</td>
+                    <td><input type="text" id="Quantity" name="Quantity" placeholder="請輸入股數"></td>
+                    <td><input type="text" id="Price" name="Price" placeholder="請輸入價格"></td>
+                    <td><input type="submit" value="Submit"></td>
+                </tr>
+
+            </table>
+        </div>
+    </form>
+
+
+    <div class="footer">
+
+    </div>
     
+
 </body>
+
 </html>

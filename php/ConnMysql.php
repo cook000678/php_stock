@@ -27,7 +27,7 @@ function Connect()
 	}
 
   if(Connect()){
-    echo '連線成功';
+    //echo '連線成功';
   }else{
     echo '連線失敗';
   }
