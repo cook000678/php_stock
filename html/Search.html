@@ -6,38 +6,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/php_stock/css/Select.css">
+    <link rel="stylesheet" href="/php_stock/css/Search.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="header">
 
     </div>
-    <form action="/php_stock/php/Select.php" method="POST">
+    <form id="demo">
         <div class="Select">
             <h2>查詢</h2>
             <table id="Select">
                 <tr>
                     <th>ID</th>
-                    <th id="Date">Start_Date</th>
-                    <th id="Date">End_Date</th>
-                    <th id="Codename">Codename</th>
-                    <th id="Name">Name</th>
-                    <th id="Buy_Sell" colspan="2">Buy_Sell</th>
+                    <!--
+                    <th>Start_Date</th>
+                    <th>End_Date</th>
+                    -->
+                    <th>Codename</th>
+                    <th>Name</th>
+                    <th>Buy_Sell</th>
                 </tr>
-
                 <tr>
                     <td><input type="text" id="ID" name="ID" placeholder="請輸入ID"></td>
+                    <!--
                     <td><input type="date" id="Date" name="Start_Date" placeholder="請輸入開始時間"></td>
                     <td><input type="date" id="Date" name="End_Date" placeholder="請輸入結束時間"></td>
+                    -->
                     <td><input type="text" id="Codename" name="Codename" placeholder="請輸入代號"></td>
                     <td><input type="text" id="Name" name="Name" placeholder="請輸入名字"></td>
-                    <td><input type="radio" name="Sell_Buy" value="Buy">買</td>
-                    <td><input type="radio" name="Sell_Buy" value="Sell">賣</td>
-                    <td><input type="submit" value="查詢"></td>
+                    
+                    <!--<td><input type="submit" value="查詢"></td>-->
+                    <td><button type="button" id="btn">送出出出出</button></td>
                 </tr>
             </table>
-
         </div>
-    </form>    
+    </form>
+    <p id="result"></p>
+    
+    <script>
+        $(document).ready(function() {
+            $("#btn").click(function() { //ID 為 submitExample 的按鈕被點擊時
+                $.ajax({
+                    type: "POST", //傳送方式
+                    url: "../php/Search.php", //傳送目的地
+                    dataType: "json", //資料格式
+                    data: { //傳送資料
+                        ID: $("#ID").val(), //表單欄位 ID nickname
+                        Codename: $("#Codename").val(), //表單欄位 ID gender
+                        Name: $("#Name").val()
+                    },
+                    success: function(data) {
+                        if (data.ID != null) { //如果後端回傳 json 資料有 ID
+                            $("#demo")[0].reset(); //重設 ID 為 demo 的 form (表單)
+                            $("#result").html('<font color="#007500">ID是: </font>'+ data.ID +
+                                                '<font color="#007500">  代號是: </font>' +data.Codename + 
+                                                '<font color="#007500">  名稱是:</font>' + data.Name);
+                        } else { //否則讀取後端回傳 json 資料 errorMsg 顯示錯誤訊息
+                            $("#demo")[0].reset(); //重設 ID 為 demo 的 form (表單)
+                            $("#result").html('<font color="#ff0000">' + data.errorMsg + '</font>'+ '錯誤!!');
+                        }
+                    },
+                    error: function(jqXHR) {
+                        //$("#demo")[0].reset(); //重設 ID 為 demo 的 form (表單)
+                        $("#result").html('<font color="#ff0000">發生錯誤：' + jqXHR.status + '</font>'+ '爆了直接error');
+                    }
+                    
+                })
+            })        
+        });
+        
+    </script>
 </body>
 </html>

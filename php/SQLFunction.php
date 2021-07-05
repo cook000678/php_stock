@@ -53,13 +53,27 @@ function Insert_Stock($ID, $Date, $Codename, $Name, $Sell_Buy, $Quantity, $Price
 
 }
 
-//Select stock
-function Search_Stock($ID, $Start_Date, $End_Date, $Codename, $Name, $Sell_Buy){
+//Search stock
+function Search_Stock($ID){
     global $ConnectSystem;
     $sql = ("SELECT * 
-            FROM `history` 
-            WHERE `ID` = '2' ");
+            FROM `stock`.`history` 
+            WHERE `ID` = :ID ");
+    $sth = $ConnectSystem -> prepare($sql);
+    $sth ->bindParam(":ID", $ID, PDO::PARAM_INT);
+    $sth ->execute();
 
+    $Sear_Data = array();
+    while($Result = $sth ->fetch(PDO::FETCH_ASSOC)){
+        $Sear_temp['ID'] = $Result['ID'];
+        $Sear_temp['Codename'] = $Result['Codename'];
+        $Sear_temp['Name'] = $Result['Name'];
+        $Sear_Data[] = $Sear_temp;
+    unset($Sear_temp);
+    }
+    return $Sear_Data;
 }
+
+
 
 ?>

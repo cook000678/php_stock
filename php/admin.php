@@ -30,7 +30,7 @@ echo $ID. "       " . $Date ."       ". $Codename . "       " . $Name . "       
 
 
 if($ID!="" && $Date!= "" && $Codename!="" && $Name!="" && $Sell_Buy!="" && $Quantity!="" && $Price!=""){
-	//$Ins_stock = Insert_Stock($ID, $Date, $Codename, $Name, $Sell_Buy, $Quantity, $Price) ."<br>";
+	$Ins_stock = Insert_Stock($ID, $Date, $Codename, $Name, $Sell_Buy, $Quantity, $Price) ."<br>";
 	echo'新增成功'."<br>";
 }else{
 	header("Location:/php_stock/html/admin.html");
