@@ -19,25 +19,15 @@
             <table id="Select">
                 <tr>
                     <th>ID</th>
-                    <!--
-                    <th>Start_Date</th>
-                    <th>End_Date</th>
-                    -->
                     <th>Codename</th>
                     <th>Name</th>
                     <th>Buy_Sell</th>
                 </tr>
                 <tr>
                     <td><input type="text" id="ID" name="ID" placeholder="請輸入ID"></td>
-                    <!--
-                    <td><input type="date" id="Date" name="Start_Date" placeholder="請輸入開始時間"></td>
-                    <td><input type="date" id="Date" name="End_Date" placeholder="請輸入結束時間"></td>
-                    -->
                     <td><input type="text" id="Codename" name="Codename" placeholder="請輸入代號"></td>
                     <td><input type="text" id="Name" name="Name" placeholder="請輸入名字"></td>
-                    
-                    <!--<td><input type="submit" value="查詢"></td>-->
-                    <td><button type="button" id="btn">送出出出出</button></td>
+                    <td><button type="button" id="btn">送出</button></td>
                 </tr>
             </table>
         </div>
@@ -52,23 +42,41 @@
                     url: "../php/Search.php", //傳送目的地
                     dataType: "json", //資料格式
                     data: { //傳送資料
-                        ID: $("#ID").val(), //表單欄位 ID nickname
-                        Codename: $("#Codename").val(), //表單欄位 ID gender
+                        ID: $("#ID").val(),
+                        Codename: $("#Codename").val(),
                         Name: $("#Name").val()
                     },
                     success: function(data) {
+                        
+                        data.forEach(function(v){  
+                            // 把data foreach成 v(alue)
+                            // 或用for(i=0,i<data.length;i++) let v = data[i]
+                            for(i=0; i<data.length; i++){
+                                let v = data[i];
+                            }
+                            
+                            if (v.ID !== null) { //如果後端回傳 json 資料有 ID
+                                $("#demo")[0].reset(); 
+                                $("#result").html(v.ID +v.Codename + v.Name + v.Price);
+                            } else { //否則讀取後端回傳 json 資料 errorMsg 顯示錯誤訊息
+                                $("#demo")[0].reset(); 
+                                $("#result").html('<font color="#ff0000">' + v.errorMsg + '</font>'+ '錯誤!!');
+                            }
+                        })
+                        
+                        /*
+                        console.log(data);
                         if (data.ID != null) { //如果後端回傳 json 資料有 ID
-                            $("#demo")[0].reset(); //重設 ID 為 demo 的 form (表單)
-                            $("#result").html('<font color="#007500">ID是: </font>'+ data.ID +
-                                                '<font color="#007500">  代號是: </font>' +data.Codename + 
-                                                '<font color="#007500">  名稱是:</font>' + data.Name);
+                            $("#demo")[0].reset(); 
+                            $("#result").html(data.ID +data.Codename + data.Name);
                         } else { //否則讀取後端回傳 json 資料 errorMsg 顯示錯誤訊息
-                            $("#demo")[0].reset(); //重設 ID 為 demo 的 form (表單)
+                            $("#demo")[0].reset(); 
                             $("#result").html('<font color="#ff0000">' + data.errorMsg + '</font>'+ '錯誤!!');
                         }
+                        */
                     },
                     error: function(jqXHR) {
-                        //$("#demo")[0].reset(); //重設 ID 為 demo 的 form (表單)
+                        $("#demo")[0].reset();
                         $("#result").html('<font color="#ff0000">發生錯誤：' + jqXHR.status + '</font>'+ '爆了直接error');
                     }
                     

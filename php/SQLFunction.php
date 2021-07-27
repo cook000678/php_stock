@@ -64,10 +64,14 @@ function Search_Stock($ID){
     $sth ->execute();
 
     $Sear_Data = array();
-    while($Result = $sth ->fetch(PDO::FETCH_ASSOC)){
+    while($Result = $sth -> fetch(PDO::FETCH_ASSOC)){
         $Sear_temp['ID'] = $Result['ID'];
+        $Sear_temp['Date'] = $Result['Date'];
         $Sear_temp['Codename'] = $Result['Codename'];
         $Sear_temp['Name'] = $Result['Name'];
+        $Sear_temp['Buy'] = $Result['Buy'];
+        $Sear_temp['Quantity'] = $Result['Quantity'];
+        $Sear_temp['Price'] = $Result['Price'];
         $Sear_Data[] = $Sear_temp;
     unset($Sear_temp);
     }

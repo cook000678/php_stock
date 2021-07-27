@@ -1,19 +1,30 @@
 <?php
-header('Content-Type: application/json; charset=UTF-8'); //設定資料類型為 json，編碼 utf-8
+//header("Content-type=text/html;charset=utf-8");
+//header('Content-type:text/json');
+$servername = "localhost";
+$username = "haohao";
+$password = "hao860211";
+$dbname = "studentinfo";
 
-    $nickname = $_POST["nickname"]; //取得 nickname POST 值
-    $gender = $_POST["gender"]; //取得 gender POST 值
-    if ($nickname != null && $gender != null) { //如果 nickname 和 gender 都有填寫
-        //回傳 nickname 和 gender json 資料
-        echo json_encode(array(
-            'nickname' => $nickname,
-            'gender' => $gender
-        ));
-    } else {
-        //回傳 errorMsg json 資料
-        echo json_encode(array(
-            'errorMsg' => '資料未輸入完全！'
-        ));
+// 建立連線
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("連線失敗: " . $conn->connect_error);
+} 
+
+mysqli_query($conn, 'set names utf8');
+$sql = "SELECT studentID, studentName, class, department,teleNumber FROM studentinfo";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // 輸出資料
+    while($row = $result->fetch_assoc()) {
+        echo json_encode($row,JSON_UNESCAPED_UNICODE).' ';
     }
-
+} else {
+    echo "0 結果";
+}
+$conn->close();
 ?>

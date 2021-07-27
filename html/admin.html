@@ -16,38 +16,90 @@
     <div class="header">
 
     </div>
-    <form action="../php/admin.php" method="POST">
-        <div class="Insert">
+        <form id="demo" >
             <h2>新增</h2>
             <table id="Insert">
                 <tr>
-                    <th id="Date">Date</th>
-                    <th id="Codename">Codename</th>
-                    <th id="Name">Name</th>
-                    <th id="Buy_Sell" colspan="2">Buy_Sell</th>
-                    <th id="Quantity">Quantity</th>
-                    <th id="Price">Price</th>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Codename</th>
+                    <th>Name</th>
+                    <th>Buy_Sell</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
                 </tr>
 
                 <tr>
-                    <td><input type="date" id="Date" name="Date" placeholder="請選擇時間"></td>
+                    <td><input type="text" id="ID" name="ID" placeholder="請輸入ID"></td>
+                    <td><input type="date" id="Date" name="Date" ></td>
                     <td><input type="text" id="Codename" name="Codename" placeholder="請輸入代號"></td>
                     <td><input type="text" id="Name" name="Name" placeholder="請輸入名字"></td>
-                    <td><input type="radio" name="Sell_Buy" value="Buy">買</td>
-                    <td><input type="radio" name="Sell_Buy" value="Sell">賣</td>
+                    <td>
+                        <select id="Sell_Buy" name="Sell_Buy">
+                            <option value="Buy">Buy</option>
+                            <option value="Sell">Sell</option>
+                        </select>
+                    </td>
                     <td><input type="text" id="Quantity" name="Quantity" placeholder="請輸入股數"></td>
                     <td><input type="text" id="Price" name="Price" placeholder="請輸入價格"></td>
-                    <td><input type="submit" value="Submit"></td>
+                    <td><button type="button" id="btn">送出出出出</button></td>
                 </tr>
 
             </table>
-        </div>
-    </form>
+        </form>
+        
+        <script>
+            $(document).ready(function() {
+                $("#btn").click(function() { //ID 為 submitExample 的按鈕被點擊時
+                    $.ajax({
+                        type: "POST", //傳送方式
+                        url: "../php/admin.php", //傳送目的地
+                        dataType: "json", //資料格式
+                        data: ({ //傳送資料
+                            ID: $("#ID").val(), 
+                            Date: $("#Date").val(),
+                            Codename: $("#Codename").val(), 
+                            Name: $("#Name").val(),
+                            Sell_Buy: $("#Sell_Buy").val(),
+                            Quantity: $("#Quantity").val(),
+                            Price: $("#Price").val()
+                        }),
+                        success: function(data) {
+                            console.log(data.Sell_Buy);
+                            if(data.Sell_Buy =='Buy'){
+                                $Sell_Buy = 'Buy';
+                            }else{
+                                $Sell_Buy = 'Sell';
+                            }
+                            if (data.ID != null) { //如果後端回傳 json 資料有 ID
+                                alert('成功');
+                                $("#demo")[0].reset(); //重設 ID 為 demo 的 form (表單)
+                                $("#result").html('<font color="#007500">新增ID: <font color="#0000ff">' + data.ID + '<br>' +
+                                                  '<font color="#007500">新增日期: <font color="#0000ff">' + data.Date + '<br>' +
+                                                  '<font color="#007500">新增代號: <font color="#0000ff">' + data.Codename + '<br>' + 
+                                                  '<font color="#007500">新增名稱: <font color="#0000ff">' + data.Name + '<br>' +
+                                                  '<font color="#007500">買或賣: <font color="#0000ff">' + $Sell_Buy + '<br>' +
+                                                  '<font color="#007500">數量: <font color="#0000ff">' + data.Quantity + '<br>' + 
+                                                  '<font color="#007500">價格: <font color="#0000ff">' + data.Price);
+                                                  
+                            } else { //否則讀取後端回傳 json 資料 errorMsg 顯示錯誤訊息
+                                alert('失敗');
+                                $("#demo")[0].reset(); //重設 ID 為 demo 的 form (表單)
+                                $("#result").html('<font color="#ff0000">' + data.errorMsg + '</font>');
+                            }
+                        },
+                        error: function(jqXHR) {
+                            //$("#demo")[0].reset(); //重設 ID 為 demo 的 form (表單)
+                            $("#result").html('<font color="#ff0000">發生錯誤：' + jqXHR.status + '</font>'+ '爆了直接error');
+                        }
+                        
+                    })
+                })        
+            });
+            
+        </script>
 
-
-    <div class="footer">
-
-    </div>
+    <p id="result"></p>
     
 
 </body>
